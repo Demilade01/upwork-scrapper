@@ -9,7 +9,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/main.js",
-    "dev": "tsx watch src/main.ts"
+    "dev": "npx tsx --watch src/main.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.9.4",
