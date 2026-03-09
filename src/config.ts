@@ -10,6 +10,9 @@ const envSchema = z.object({
   TELEGRAM_CHAT_ID: z.string().min(1),
   GROQ_API_KEY: z.string().min(1),
   DATABASE_URL: z.string().url(),
+  UPWORK_CLIENT_ID: z.string().min(1),
+  UPWORK_CLIENT_SECRET: z.string().min(1),
+  UPWORK_REFRESH_TOKEN: z.string().default(""),
   UPWORK_SEARCH_QUERIES: z
     .string()
     .transform((val) => val.split(",").map((q) => q.trim()).filter(Boolean)),

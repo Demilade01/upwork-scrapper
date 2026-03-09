@@ -9,7 +9,9 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/main.js",
-    "dev": "npx tsx --watch src/main.ts"
+    "dev": "npx tsx --watch src/main.ts",
+    "setup-oauth": "npx tsx src/setup-oauth.ts",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.9.4",
