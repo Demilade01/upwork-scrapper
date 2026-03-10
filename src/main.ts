@@ -1,6 +1,8 @@
 import { initDb } from "./store.js";
 import { bot, registerCallbackHandlers } from "./telegram.js";
 import { startScheduler } from "./scheduler.js";
+import { startServer } from "./server.js";
+import { config } from "./config.js";
 
 async function main(): Promise<void> {
   console.log("🚀 Upwork Voice AI Bot starting…");
@@ -14,7 +16,10 @@ async function main(): Promise<void> {
   // 3. Start the polling scheduler (runs pipeline immediately + on cron)
   startScheduler();
 
-  // 4. Start Grammy bot (handles incoming callback_query from button presses)
+  // 4. Start Fastify HTTP server + Swagger UI
+  await startServer(config.PORT);
+
+  // 5. Start Grammy bot (handles incoming callback_query from button presses)
   console.log("🤖 Telegram bot listening for interactions…");
   await bot.start();
 }
