@@ -45,6 +45,15 @@ export async function saveJob(job: UpworkJob): Promise<void> {
   `;
 }
 
+export async function getRecentJobs(limit: number = 20): Promise<unknown[]> {
+  return sql`
+    SELECT job_id, title, url, budget, skills, client_country, posted_at, created_at
+    FROM jobs
+    ORDER BY created_at DESC
+    LIMIT ${limit}
+  `;
+}
+
 export async function getJobById(jobId: string): Promise<UpworkJob | null> {
   const rows = await sql`
     SELECT * FROM jobs WHERE job_id = ${jobId} LIMIT 1

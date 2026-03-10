@@ -16,6 +16,7 @@ const envSchema = z.object({
   UPWORK_SEARCH_QUERIES: z
     .string()
     .transform((val) => val.split(",").map((q) => q.trim()).filter(Boolean)),
+  PORT: z.coerce.number().default(3000),
   POLL_INTERVAL_MINUTES: z.coerce.number().int().positive().default(30),
   FREELANCER_NAME: z.string().default("Your Name"),
   FREELANCER_SKILLS: z
